@@ -17,6 +17,8 @@ services:
     image: phanxuanloc2612/travelove
     ports:
       - 8080:8080
+    volumes:
+      - ../data:/data
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/travelove?autoReconnect=true&useSSL=false
     depends_on:
