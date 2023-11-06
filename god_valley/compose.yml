@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
   docker-mysql:
     image: mysql:8.0
@@ -24,3 +25,31 @@ services:
     depends_on:
       docker-mysql:
         condition: service_healthy
+=======
+services:
+  docker-mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=26122002loc
+      - MYSQL_DATABASE=travelove
+    ports:
+      - 3307:3306
+    volumes:
+      - ../db:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD
+      start_period: 5s
+      timeout: 5s
+      retries: 10
+  app:
+    image: phanxuanloc2612/travelove
+    ports:
+      - 8080:8080
+    volumes:
+      - ../data:/data
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/travelove?autoReconnect=true&useSSL=false
+    depends_on:
+      docker-mysql:
+        condition: service_healthy
+>>>>>>> refs/remotes/origin/main

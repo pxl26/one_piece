@@ -18,6 +18,7 @@
 --
 -- Table structure for table `google`
 --
+USER travelove;
 
 DROP TABLE IF EXISTS `google`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
